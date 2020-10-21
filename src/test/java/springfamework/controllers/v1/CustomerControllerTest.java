@@ -82,7 +82,7 @@ public class CustomerControllerTest {
         mockMvc.perform(get("/api/v1/customers/1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.firstName", equalTo(FIRST_NAME)));
+                .andExpect(jsonPath("$.firstname", equalTo(FIRST_NAME)));
     }
 
     @Test
@@ -104,7 +104,7 @@ public class CustomerControllerTest {
                     .contentType(MediaType.APPLICATION_JSON)
                     .content(asJsonString(customer)))
                 .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.firstName", equalTo(FIRST_NAME)))
+                .andExpect(jsonPath("$.firstname", equalTo(FIRST_NAME)))
                 .andExpect(jsonPath("$.customer_url",equalTo("/api/v1/customers/1")));
     }
 }
