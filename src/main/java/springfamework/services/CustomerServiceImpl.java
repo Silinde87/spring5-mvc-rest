@@ -3,6 +3,7 @@ package springfamework.services;
 import org.springframework.stereotype.Service;
 import springfamework.api.v1.mapper.CustomerMapper;
 import springfamework.api.v1.model.CustomerDTO;
+import springfamework.domain.Customer;
 import springfamework.repositories.CustomerRepository;
 
 import java.util.List;
@@ -38,5 +39,19 @@ public class CustomerServiceImpl implements CustomerService {
         return customerRepository.findById(id)
                 .map(customerMapper::customerToCustomerDTO)
                 .orElseThrow(RuntimeException::new); //todo implement better exception handling
+    }
+
+    @Override
+    public CustomerDTO createNewCustomer(CustomerDTO customerDTO) {
+
+        Customer customer = customerMapper.customerDtoToCustomer(customerDTO);
+
+        Customer savedCustomer = customerRepository.save(customer);
+
+        CustomerDTO returnDto = customerMapper.customerToCustomerDTO(savedCustomer);
+
+        returnDto.setCustomerUrl("/api/v1/customers/" + savedCustomer.getId());
+
+        return returnDto;
     }
 }
