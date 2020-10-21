@@ -14,7 +14,7 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class CustomerServiceTest {
 
@@ -52,7 +52,7 @@ public class CustomerServiceTest {
     public void getCustomerById() throws Exception {
         //given
         Customer customer1 = new Customer();
-        customer1.setId(1l);
+        customer1.setId(ID);
         customer1.setFirstName(FIRST_NAME);
         customer1.setLastName(LAST_NAME);
 
@@ -107,6 +107,13 @@ public class CustomerServiceTest {
         //then
         assertEquals(customerDTO.getFirstName(), savedDto.getFirstName());
         assertEquals("/api/v1/customers/1", savedDto.getCustomerUrl());
+    }
+
+    @Test
+    public void deleteCustomerById() throws Exception{
+        customerRepository.deleteById(ID);
+
+        verify(customerRepository, times(1)).deleteById(anyLong());
     }
 
 }
