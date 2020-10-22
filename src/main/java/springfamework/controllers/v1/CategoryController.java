@@ -1,8 +1,6 @@
 package springfamework.controllers.v1;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import springfamework.api.v1.model.CategoryDTO;
 import springfamework.api.v1.model.CategoryListDTO;
@@ -13,10 +11,12 @@ import springfamework.services.CategoryService;
 //This way we can keep code cleaner. Check CustomerController for earlier versions of Spring Controllers.
 
 @RestController
-@RequestMapping("/api/v1/categories")
+@RequestMapping(CategoryController.CAT_BASE_URL)
 public class CategoryController {
 
     private final CategoryService categoryService;
+    public static final String CAT_BASE_URL = "/api/v1/categories";
+
 
     public CategoryController(CategoryService categoryService) {
         this.categoryService = categoryService;

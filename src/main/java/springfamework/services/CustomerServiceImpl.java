@@ -3,6 +3,7 @@ package springfamework.services;
 import org.springframework.stereotype.Service;
 import springfamework.api.v1.mapper.CustomerMapper;
 import springfamework.api.v1.model.CustomerDTO;
+import springfamework.controllers.v1.CustomerController;
 import springfamework.domain.Customer;
 import springfamework.repositories.CustomerRepository;
 
@@ -27,7 +28,7 @@ public class CustomerServiceImpl implements CustomerService {
                 .stream()
                 .map(customer -> {
                    CustomerDTO customerDTO = customerMapper.customerToCustomerDTO(customer);
-                   customerDTO.setCustomerUrl("/api/v1/customers/" + customer.getId());
+                   customerDTO.setCustomerUrl(CustomerController.CUS_BASE_URL + "/" + customer.getId());
                    return customerDTO;
                 })
                 .collect(Collectors.toList());
@@ -40,7 +41,7 @@ public class CustomerServiceImpl implements CustomerService {
                 .map(customerMapper::customerToCustomerDTO)
                 .map(customerDTO -> {
                     //set API URL
-                    customerDTO.setCustomerUrl("/api/v1/customer/" + id);
+                    customerDTO.setCustomerUrl(CustomerController.CUS_BASE_URL + "/" + id);
                     return customerDTO;
                 })
                 .orElseThrow(ResourceNotFoundException::new);
@@ -57,7 +58,7 @@ public class CustomerServiceImpl implements CustomerService {
 
         CustomerDTO returnDto = customerMapper.customerToCustomerDTO(savedCustomer);
 
-        returnDto.setCustomerUrl("/api/v1/customers/" + savedCustomer.getId());
+        returnDto.setCustomerUrl(CustomerController.CUS_BASE_URL + "/" + savedCustomer.getId());
 
         return returnDto;
     }
@@ -84,7 +85,7 @@ public class CustomerServiceImpl implements CustomerService {
 
             CustomerDTO returnDto = customerMapper.customerToCustomerDTO(customerRepository.save(customer));
 
-            returnDto.setCustomerUrl("/api/v1/customers/" + id);
+            returnDto.setCustomerUrl(CustomerController.CUS_BASE_URL + "/" + id);
 
             return returnDto;
 

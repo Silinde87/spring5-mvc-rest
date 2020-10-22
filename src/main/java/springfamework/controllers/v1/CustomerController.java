@@ -9,10 +9,11 @@ import springfamework.api.v1.model.CustomerListDTO;
 import springfamework.services.CustomerService;
 
 @Controller
-@RequestMapping("/api/v1/customers")
+@RequestMapping(CustomerController.CUS_BASE_URL)
 public class CustomerController {
 
     private final CustomerService customerService;
+    public static final String CUS_BASE_URL = "/api/v1/customers";
 
     public CustomerController(CustomerService customerService) {
         this.customerService = customerService;

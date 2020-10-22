@@ -3,6 +3,7 @@ package springfamework.services;
 import org.springframework.stereotype.Service;
 import springfamework.api.v1.mapper.CategoryMapper;
 import springfamework.api.v1.model.CategoryDTO;
+import springfamework.controllers.v1.CategoryController;
 import springfamework.repositories.CategoryRepository;
 
 import java.util.List;
@@ -35,7 +36,7 @@ public class CategoryServiceImpl implements CategoryService {
                 .map(categoryMapper::categoryToCategoryDTO)
                 .map(categoryDTO -> {
                     //set API URL
-                    categoryDTO.setCategoryUrl("/api/v1/categories/" + name);
+                    categoryDTO.setCategoryUrl(CategoryController.CAT_BASE_URL + "/" + name);
                     return categoryDTO;
                 })
                 .orElseThrow(ResourceNotFoundException::new);
