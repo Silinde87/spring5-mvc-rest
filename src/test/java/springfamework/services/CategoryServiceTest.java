@@ -55,7 +55,7 @@ public class CategoryServiceTest {
         category.setId(ID);
         category.setName(NAME);
 
-        when(categoryRepository.findByName(anyString())).thenReturn(category);
+        when(categoryRepository.findByName(anyString())).thenReturn(java.util.Optional.ofNullable(category));
 
         //WHEN
         CategoryDTO categoryDTO = categoryService.getCategoryByName(NAME);
