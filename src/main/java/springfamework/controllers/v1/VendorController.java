@@ -4,7 +4,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import springfamework.api.v1.model.VendorDTO;
 import springfamework.api.v1.model.VendorListDTO;
-import springfamework.domain.Vendor;
 import springfamework.services.VendorService;
 
 @RestController
