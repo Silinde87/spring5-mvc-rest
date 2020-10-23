@@ -2,5 +2,8 @@
 [![codecov](https://codecov.io/gh/Silinde87/spring5-mvc-rest/branch/main/graph/badge.svg?token=FD430Q9FI3)](https://codecov.io/gh/Silinde87/spring5-mvc-rest)
 # Spring Framework 5 MVC Rest Application
 
-This repository is an example application built in Spring Framework 5
+This repository is an example application built in Spring Framework 5 using RESTful API
 
+<p align="center">
+<img src="https://github.com/Silinde87/spring5-mvc-rest/blob/main/src/main/resources/RESTful%20API.gif?raw=true">
+<p>
